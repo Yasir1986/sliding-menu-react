@@ -1,8 +1,25 @@
 import React, { Component } from "react";
 import "./Menu.css";
 
- 
+
+const MenuList = [
+  {
+    field: 'hurma',
+    path: '/',
+  },
+  {
+    field: 'profile',
+    path: '/profile',
+  },
+
+  {
+    field: 'logout',
+    path: '/',
+  },
+];
+
 class Menu extends Component {
+     
   render() {
     var visibility = "hide";
  
@@ -12,10 +29,15 @@ class Menu extends Component {
  
     return (
       <div id="flyoutMenu" className={visibility}>
-        <h2><a href="/">Home</a></h2>
-        <h2><a href="/">About</a></h2>
-        <h2><a href="/">Contact</a></h2>
-        <h2><a href="/">Search</a></h2>
+      <div id="sidebar-menu">
+        <ul>
+          {MenuList.map(menu => (
+             <li key={menu.field}>
+             <a href={menu.path}>{menu.field}</a>
+           </li>
+          ))}
+        </ul>
+      </div>
       </div>
     );
   }
